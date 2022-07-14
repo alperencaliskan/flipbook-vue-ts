@@ -1,5 +1,5 @@
 {
-  "name": "flipbook-vue",
+  "name": "flipbook-vue3-ts",
   "version": "0.10.4",
   "license": "MIT",
   "description": "3D page flip effect for Vue.js",
@@ -18,45 +18,39 @@
     "coffeescript",
     "coffeescript2"
   ],
-  "main": "dist/flipbook.cjs.js",
+  "main": "dist/flipbook.umd.cjs",
   "module": "dist/flipbook.es.js",
   "unpkg": "dist/flipbook.min.js",
   "browser": {
     "./sfc": "src/Flipbook.vue"
   },
+  "types": "dist/index.d.ts",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --dest demo",
     "dist": "rollup -c rollup.config.js"
   },
   "dependencies": {
-    "rematrix": "^0.4.1"
+    "rematrix": "^0.7.2"
   },
   "devDependencies": {
-    "@rollup/plugin-buble": "^0.21.3",
-    "@rollup/plugin-commonjs": "^15.0.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "@rollup/plugin-url": "^5.0.1",
-    "@vue/cli-plugin-babel": "^3.7.0",
-    "@vue/cli-service": "^4.3.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/compiler-sfc": "^3.2.37",
+    "@vue/eslint-config-typescript": "^11.0.0",
     "autoprefixer": "^9.5.1",
-    "coffee-loader": "^0.9.0",
-    "coffeescript": "^2.4.1",
-    "core-js": "^2.6.5",
-    "rollup": "^1.12.5",
-    "rollup-plugin-coffee-script": "^2.0.0",
-    "rollup-plugin-terser": "^5.0.0",
-    "rollup-plugin-vue": "^5.0.0",
-    "svgo-loader": "^2.2.1",
-    "vue": "^2.6.10",
-    "vue-cli-plugin-coffeescript": "^0.0.3",
-    "vue-cli-plugin-pug": "~2.0.0",
+    "eslint": "^8.19.0",
+    "eslint-plugin-vue": "^9.2.0",
+    "typescript": "^4.7.4",
+    "vite": "^2.9.14",
+    "vite-tsconfig-paths": "^3.5.0",
+    "vue": "^3.2.0",
     "vue-material-design-icons": "^3.2.0",
     "vue-ribbon": "^1.0.1",
-    "vue-template-compiler": "^2.5.21"
+    "vue-tsc": "^0.38.5"
   },
   "peerDependencies": {
-    "vue": "^2.6.10"
+    "vue": "^3.2.0"
   },
   "postcss": {
     "plugins": {
@@ -70,6 +64,13 @@
   "files": [
     "dist",
     "src/Flipbook.vue",
-    "src/matrix.coffee"
-  ]
+    "src/matrix.ts"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/flipbook.es.js",
+      "require": "./dist/flipbook.umd.cjs"
+    },
+    "./dist/style.css": "./dist/style.css"
+  }
 }
